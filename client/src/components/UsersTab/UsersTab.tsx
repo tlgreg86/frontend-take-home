@@ -1,9 +1,19 @@
 import { Tabs } from "@radix-ui/themes";
+import UsersTable from "./UsersTable";
+import { useGetUsers } from "../../api/users/useGetUsers";
 
 const UsersTab = () => {
+  const {
+    isPending,
+    data,
+  } = useGetUsers();
+
   return (
     <Tabs.Content value="users">
-      Users Tab
+      <UsersTable
+        users={data?.data}
+        isPending={isPending}
+      />
     </Tabs.Content>
   );
 };

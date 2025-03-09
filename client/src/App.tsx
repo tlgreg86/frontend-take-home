@@ -1,7 +1,7 @@
 import { Container, Tabs } from "@radix-ui/themes";
 import TabsHeader from "./components/TabsHeader/TabsHeader";
-import UsersTab from './components/UsersTab/UsersTab';
-import RolesTab from './components/RolesTab/RolesTab';
+import UsersTab from "./components/UsersTab/UsersTab";
+import RolesTab from "./components/RolesTab/RolesTab";
 
 function App() {
   return (
