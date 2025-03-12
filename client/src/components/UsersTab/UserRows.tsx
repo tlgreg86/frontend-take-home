@@ -1,7 +1,7 @@
-import { Avatar, Flex, IconButton, Table } from "@radix-ui/themes";
+import { Avatar, Flex, Table } from "@radix-ui/themes";
 import UserRole from './UserRole';
-import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 import { User } from '../../api/users/types';
+import ActionMenu from './ActionMenu';
 
 type UserRowsProps = {
   users: User[]
@@ -28,10 +28,8 @@ const UserRows = ({users}: UserRowsProps) => {
         <UserRole roleId={user.roleId} />
       </Table.Cell>
       <Table.Cell>{formatter.format(new Date(user.createdAt))}</Table.Cell>
-      <Table.Cell>
-        <IconButton radius="full" color="gray" variant="ghost">
-          <DotsHorizontalIcon />
-        </IconButton>
+      <Table.Cell align={"center"}>
+        <ActionMenu user={user} />
       </Table.Cell>
     </Table.Row>
   ));

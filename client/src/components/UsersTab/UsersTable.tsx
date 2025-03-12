@@ -13,10 +13,10 @@ const UsersTable = ({
     <Table.Root variant="surface">
       <Table.Header>
         <Table.Row>
-          <Table.ColumnHeaderCell>User</Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell>Role</Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell>Joined</Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell />
+          <Table.ColumnHeaderCell width={"30%"}>User</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell width={"30%"}>Role</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell width={"30%"}>Joined</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell width={"10%"} />
         </Table.Row>
       </Table.Header>
 
