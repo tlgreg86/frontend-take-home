@@ -40,6 +40,7 @@ const RolesTab = ({ resetSearchParams }: RolesTabProps) => {
     <Tabs.Content value="roles">
       <Search
         onSearchInputChange={onSearchInputChange}
+        buttonText="+ Add role"
         placeholderText="Search by role..."
         ariaLabel="Search roles by name"
       />

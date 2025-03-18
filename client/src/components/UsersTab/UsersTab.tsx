@@ -38,6 +38,7 @@ const UsersTab = ({ resetSearchParams }: UsersTabProps) => {
     <Tabs.Content value="users">
       <Search
         onSearchInputChange={onSearchInputChange}
+        buttonText="+ Add user"
         placeholderText="Search by name..."
         ariaLabel="Search users by name"
       />
