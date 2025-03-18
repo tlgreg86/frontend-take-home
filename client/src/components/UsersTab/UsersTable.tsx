@@ -1,6 +1,27 @@
-import { Table } from "@radix-ui/themes";
-import UserRows from './UserRows';
-import { User } from '../../api/users/types';
+import { Table, Skeleton } from "@radix-ui/themes";
+import UserRows from "./UserRows";
+import { User } from "../../api/users/types";
+
+const SkeletonLoader = () => {
+  return (
+    <>
+      <Table.Row>
+        <Table.Cell>
+          <Skeleton width="30%" />
+        </Table.Cell>
+        <Table.Cell>
+          <Skeleton width="30%" />
+        </Table.Cell>
+        <Table.Cell>
+          <Skeleton width="30%" />
+        </Table.Cell>
+        <Table.Cell>
+          <Skeleton width="10%" />
+        </Table.Cell>
+      </Table.Row>
+    </>
+  );
+};
 
 const UsersTable = ({
   users,
@@ -21,8 +42,7 @@ const UsersTable = ({
       </Table.Header>
 
       <Table.Body>
-        {isPending && <>loading</>}
-        {users && <UserRows users={users} />}
+        {isPending ? <SkeletonLoader /> : <UserRows users={users} />}
       </Table.Body>
     </Table.Root>
   );
