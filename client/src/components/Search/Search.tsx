@@ -1,13 +1,15 @@
 import { Button, Flex, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import AddUserDialog from "../UsersTab/AddUserDialog";
-import { useState } from "react";
 
 interface SearchProps {
   placeholderText: string;
   onSearchInputChange: (search: string) => void;
   ariaLabel: string;
   buttonText: string;
+  isDialogOpen: boolean;
+  handleDialogClose: () => void;
+  handleDialogOpen: () => void;
 }
 
 const Search = ({
@@ -15,12 +17,10 @@ const Search = ({
   placeholderText,
   onSearchInputChange,
   ariaLabel,
+  isDialogOpen,
+  handleDialogClose,
+  handleDialogOpen,
 }: SearchProps) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleDialogOpen = () => setIsDialogOpen(true);
-  const handleDialogClose = () => setIsDialogOpen(false);
-
   return (
     <>
       <Flex gap="2" style={{ margin: "24px 0px" }}>
