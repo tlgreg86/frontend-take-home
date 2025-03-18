@@ -1,15 +1,17 @@
 import { Flex, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
+interface SearchProps {
+  placeholderText: string;
+  onSearchInputChange: (search: string) => void;
+  ariaLabel: string;
+}
+
 const Search = ({
   placeholderText,
   onSearchInputChange,
   ariaLabel,
-}: {
-  placeholderText: string;
-  onSearchInputChange: (searchInput: string) => void;
-  ariaLabel: string;
-}) => {
+}: SearchProps ) => {
   return (
     <Flex gap="2" style={{ margin: "24px 0px" }}>
       <TextField.Root

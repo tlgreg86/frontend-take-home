@@ -2,7 +2,7 @@ import { Table } from "@radix-ui/themes";
 import { Role } from "../../api/roles/types";
 import RolesActionMenu from "./RolesActionMenu";
 
-type UserRowsProps = {
+interface UserRowsProps {
   roles: Role[];
 };
 

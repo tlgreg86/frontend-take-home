@@ -2,22 +2,25 @@ import { Table, Button, Flex } from "@radix-ui/themes";
 import UserRows from "./UserRows";
 import { User } from "../../api/users/types";
 import TableSkeletonLoader from "../shared/TableSkeletonLoader";
+import EmptyTable from "../shared/EmptyTable";
 
-const UsersTable = ({
-  users,
-  isPending,
-  onPrevious,
-  onNext,
-  hasPrevious,
-  hasNext,
-}: {
+interface UsersTableProps {
   users: User[];
   isPending: boolean;
   onPrevious: () => void;
   onNext: () => void;
   hasPrevious: boolean;
   hasNext: boolean;
-}) => {
+}
+
+const UsersTable = ({
+  users = [],
+  isPending,
+  onPrevious,
+  onNext,
+  hasPrevious,
+  hasNext,
+}: UsersTableProps) => {
   const hasNextOrPrevious = !!hasNext || !!hasPrevious;
 
   return (

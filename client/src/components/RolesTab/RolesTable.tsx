@@ -1,15 +1,15 @@
 import { Table } from "@radix-ui/themes";
 import { Role } from "../../api/roles/types";
 import RoleRows from "./RoleRows";
-import TableSkeletonLoader from '../shared/TableSkeletonLoader';
+import TableSkeletonLoader from "../shared/TableSkeletonLoader";
+import EmptyTable from "../shared/EmptyTable";
 
-const RolesTable = ({
-  roles,
-  isPending,
-}: {
+interface RolesTableProps {
   roles: Role[];
   isPending: boolean;
-}) => {
+}
+
+const RolesTable = ({ roles, isPending }: RolesTableProps) => {
   return (
     <Table.Root variant="surface">
       <Table.Header>

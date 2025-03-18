@@ -11,13 +11,13 @@ import { Role } from "../../api/roles/types";
 import { useEditRole } from "../../api/roles/useEditRole";
 import { useState } from "react";
 
-type Props = {
+interface EditRoleDialogProps {
   role: Role;
   open: boolean;
   onClose: () => void;
 };
 
-const EditRoleDialog = ({ role, open, onClose }: Props) => {
+const EditRoleDialog = ({ role, open, onClose }: EditRoleDialogProps) => {
   const [name, setName] = useState(role.name);
   const [description, setDescription] = useState(role.description);
 

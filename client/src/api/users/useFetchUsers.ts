@@ -1,22 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 
-type FetchUsersParams = {
+interface FetchUsersParams {
   search?: string;
   page: number;
-};
+}
 
-const buildQueryString = (searchParams: FetchUsersParams) =>
-  new URLSearchParams({
-    search: searchParams.search?.toString() ?? "",
-    page: searchParams.page.toString(),
-  }).toString();
-
-export const useFetchUsers = (searchParams: FetchUsersParams = { page: 1 }) =>
+export const useFetchUsers = (searchParams: FetchUsersParams) =>
   useQuery({
     queryKey: ["users", searchParams],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:3002/users?${buildQueryString(searchParams)}`
+        `http://localhost:3002/users?search=${searchParams.search}&page=${searchParams.page}`
       );
       if (!response.ok) {
         throw new Error("Network error");

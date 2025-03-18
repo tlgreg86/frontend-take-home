@@ -4,11 +4,11 @@ import { useState } from "react";
 import { Role } from "../../api/roles/types";
 import EditRoleDialog from "./EditRoleDialog";
 
-type Props = {
+interface ActionMenuProps {
   role: Role;
 };
 
-const ActionMenu = ({ role }: Props) => {
+const ActionMenu = ({ role }: ActionMenuProps) => {
   const [editRoleDialogOpen, setEditRoleDialogOpen] = useState(false);
 
   return (
