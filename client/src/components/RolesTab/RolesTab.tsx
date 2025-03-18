@@ -1,11 +1,17 @@
 import { Tabs } from "@radix-ui/themes";
 import Search from "../Search/Search";
-import { useState } from 'react';
-import { useDebounce } from 'react-use';
-import RolesTable from './RolesTable';
-import { useFetchRoles } from '../../api/roles/useFetchRoles';
+import {
+  useEffect,
+  useState } from "react";
+import { useDebounce } from "react-use";
+import RolesTable from "./RolesTable";
+import { useFetchRoles } from "../../api/roles/useFetchRoles";
 
-const RolesTab = () => {
+interface RolesTabProps {
+  resetSearchParams?: boolean;
+}
+
+const RolesTab = ({ resetSearchParams }: RolesTabProps) => {
   const [searchParams, setSearchParams] = useState({ page: 1, search: "" });
   const [debouncedSearchParams, setDebouncedSearchParams] =
     useState(searchParams);
@@ -23,6 +29,12 @@ const RolesTab = () => {
   const onSearchInputChange = (search: string) => {
     setSearchParams({ page: 1, search });
   };
+
+  useEffect(() => {
+    if (resetSearchParams) {
+      setSearchParams({ page: 1, search: "" });
+    }
+  }, [resetSearchParams]);    
 
   return (
     <Tabs.Content value="roles">
