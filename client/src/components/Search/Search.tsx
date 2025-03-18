@@ -9,7 +9,7 @@ const Search = ({
   onSearchInputChange: (searchInput: string) => void;
 }) => {
   return (
-    <Flex style={{ margin: "24px 0px" }}>
+    <Flex gap="2" style={{ margin: "24px 0px" }}>
       <TextField.Root
         onChange={(e) => onSearchInputChange(e.target.value)}
         style={{ flex: 1 }}
