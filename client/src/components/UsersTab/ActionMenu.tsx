@@ -21,7 +21,7 @@ const ActionMenu = ({ user }: Props) => {
         </DropdownMenu.Trigger>
         <DropdownMenu.Content align="end">
           <DropdownMenu.Item onClick={() => setDeleteUserDialogOpen(true)}>
-            Delete User
+            Delete user
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>

@@ -11,12 +11,12 @@ const buildQueryString = (searchParams: FetchUsersParams) =>
     page: searchParams.page.toString(),
   }).toString();
 
-export const useFetchUsers = (searchParams: FetchUsersParams = { page: 1 }) =>
+export const useFetchRoles = (searchParams: FetchUsersParams = { page: 1 }) =>
   useQuery({
-    queryKey: ["users", searchParams],
+    queryKey: ["roles", searchParams],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:3002/users?${buildQueryString(searchParams)}`
+        `http://localhost:3002/roles?${buildQueryString(searchParams)}`
       );
       if (!response.ok) {
         throw new Error("Network error");
