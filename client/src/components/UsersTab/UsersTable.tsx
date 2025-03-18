@@ -36,6 +36,9 @@ const UsersTable = ({
         ) : (
           <UserRows users={users} />
         )}
+        {users?.length === 0 && !isPending && (
+          <EmptyTable message="No users found" />
+        )}
         {hasNextOrPrevious && (
           <Table.Row>
             <Table.Cell colSpan={4}>

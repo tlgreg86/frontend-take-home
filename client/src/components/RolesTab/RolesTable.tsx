@@ -28,6 +28,9 @@ const RolesTable = ({
         ) : (
           <RoleRows roles={roles} />
         )}
+        {roles?.length === 0 && !isPending && (
+          <EmptyTable message="No roles found" />
+        )}
       </Table.Body>
     </Table.Root>
   );
