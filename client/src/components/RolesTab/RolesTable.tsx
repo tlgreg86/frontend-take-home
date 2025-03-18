@@ -1,24 +1,7 @@
-import { Table, Skeleton } from "@radix-ui/themes";
+import { Table } from "@radix-ui/themes";
 import { Role } from "../../api/roles/types";
 import RoleRows from "./RoleRows";
-
-const SkeletonLoader = () => {
-  return (
-    <>
-      <Table.Row>
-        <Table.Cell>
-          <Skeleton width="25%" />
-        </Table.Cell>
-        <Table.Cell>
-          <Skeleton width="65%" />
-        </Table.Cell>
-        <Table.Cell>
-          <Skeleton width="10%" />
-        </Table.Cell>
-      </Table.Row>
-    </>
-  );
-};
+import TableSkeletonLoader from '../shared/TableSkeletonLoader';
 
 const RolesTable = ({
   roles,
@@ -40,7 +23,11 @@ const RolesTable = ({
       </Table.Header>
 
       <Table.Body>
-        {isPending ? <SkeletonLoader /> : <RoleRows roles={roles} />}
+        {isPending ? (
+          <TableSkeletonLoader columnWidths={["25%", "65%", "10%"]} />
+        ) : (
+          <RoleRows roles={roles} />
+        )}
       </Table.Body>
     </Table.Root>
   );

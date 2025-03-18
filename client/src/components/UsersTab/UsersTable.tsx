@@ -1,27 +1,8 @@
-import { Table, Skeleton } from "@radix-ui/themes";
+import { Table } from "@radix-ui/themes";
 import UserRows from "./UserRows";
 import { User } from "../../api/users/types";
+import TableSkeletonLoader from '../shared/TableSkeletonLoader';
 
-const SkeletonLoader = () => {
-  return (
-    <>
-      <Table.Row>
-        <Table.Cell>
-          <Skeleton width="30%" />
-        </Table.Cell>
-        <Table.Cell>
-          <Skeleton width="30%" />
-        </Table.Cell>
-        <Table.Cell>
-          <Skeleton width="30%" />
-        </Table.Cell>
-        <Table.Cell>
-          <Skeleton width="10%" />
-        </Table.Cell>
-      </Table.Row>
-    </>
-  );
-};
 
 const UsersTable = ({
   users,
@@ -40,9 +21,12 @@ const UsersTable = ({
           <Table.ColumnHeaderCell width={"10%"} />
         </Table.Row>
       </Table.Header>
-
       <Table.Body>
-        {isPending ? <SkeletonLoader /> : <UserRows users={users} />}
+        {isPending ? (
+          <TableSkeletonLoader columnWidths={["30%", "30%", "30%", "10%"]} />
+        ) : (
+          <UserRows users={users} />
+        )}
       </Table.Body>
     </Table.Root>
   );
