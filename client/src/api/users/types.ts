@@ -1,4 +1,4 @@
-export type User = {
+export interface User {
   id: string;
   createdAt: string;
   updatedAt: string;
@@ -6,4 +6,9 @@ export type User = {
   last: string;
   roleId: string;
   photo?: string;
+};
+
+export interface FetchUsersParams{
+  search?: string;
+  page: number;
 };

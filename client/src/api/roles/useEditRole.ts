@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-type EditRoleParams = {
+interface EditRoleParams {
   id: string;
   newRoleData?: {
     name?: string;
