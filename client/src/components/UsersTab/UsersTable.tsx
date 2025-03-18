@@ -46,6 +46,7 @@ const UsersTable = ({
                   variant="surface"
                   color="gray"
                   highContrast
+                  aria-label="Go to previous page"
                 >
                   Previous
                 </Button>
@@ -55,6 +56,7 @@ const UsersTable = ({
                   variant="surface"
                   color="gray"
                   highContrast
+                  aria-label="Go to next page"
                 >
                   Next
                 </Button>

@@ -29,6 +29,7 @@ const RolesTab = () => {
       <Search
         onSearchInputChange={onSearchInputChange}
         placeholderText="Search by role..."
+        ariaLabel="Search roles by name"
       />
       <RolesTable roles={data?.data} isPending={isPending} />
     </Tabs.Content>

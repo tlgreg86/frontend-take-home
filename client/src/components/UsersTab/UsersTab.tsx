@@ -28,6 +28,7 @@ const UsersTab = () => {
       <Search
         onSearchInputChange={onSearchInputChange}
         placeholderText="Search by name..."
+        ariaLabel="Search users by name"
       />
       <UsersTable
         hasNext={!!data?.next}
