@@ -1,13 +1,14 @@
 import { Tabs } from "@radix-ui/themes";
 import Search from "../Search/Search";
 import UsersTable from "./UsersTable";
-import { useFetchUsers } from '../../api/users/useFetchUsers';
+import { useFetchUsers } from "../../api/users/useFetchUsers";
 import { useState } from "react";
 import { useDebounce } from "react-use";
 
 const UsersTab = () => {
   const [searchParams, setSearchParams] = useState({ page: 1, search: "" });
-  const [debouncedSearchParams, setDebouncedSearchParams] = useState(searchParams);
+  const [debouncedSearchParams, setDebouncedSearchParams] =
+    useState(searchParams);
 
   const { isPending, data } = useFetchUsers(debouncedSearchParams);
 
@@ -22,14 +23,24 @@ const UsersTab = () => {
   const onSearchInputChange = (search: string) => {
     setSearchParams({ page: 1, search });
   };
-
   return (
     <Tabs.Content value="users">
       <Search
         onSearchInputChange={onSearchInputChange}
         placeholderText="Search by name..."
       />
-      <UsersTable users={data?.data} isPending={isPending} />
+      <UsersTable
+        hasNext={!!data?.next}
+        hasPrevious={!!data?.prev}
+        onNext={() => {
+          setSearchParams({ ...searchParams, page: searchParams.page + 1 });
+        }}
+        onPrevious={() => {
+          setSearchParams({ ...searchParams, page: searchParams.page - 1 });
+        }}
+        users={data?.data}
+        isPending={isPending}
+      />
     </Tabs.Content>
   );
 };
