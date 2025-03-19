@@ -7,7 +7,7 @@ import { useDebounce } from "react-use";
 import RolesTable from "./RolesTable";
 import { useFetchRoles } from "../../api/roles/useFetchRoles";
 
-interface RolesTabProps {
+type RolesTabProps = {
   resetSearchParams?: boolean;
 }
 

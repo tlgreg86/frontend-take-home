@@ -4,7 +4,7 @@ import RoleRows from "./RoleRows";
 import TableSkeletonLoader from "../shared/TableSkeletonLoader";
 import EmptyTable from "../shared/EmptyTable";
 
-interface RolesTableProps {
+type RolesTableProps = {
   roles: Role[];
   isPending: boolean;
 }

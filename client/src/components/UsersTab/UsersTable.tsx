@@ -4,7 +4,7 @@ import { User } from "../../api/users/types";
 import TableSkeletonLoader from "../shared/TableSkeletonLoader";
 import EmptyTable from "../shared/EmptyTable";
 
-interface UsersTableProps {
+type UsersTableProps = {
   users: User[];
   isPending: boolean;
   onPrevious: () => void;

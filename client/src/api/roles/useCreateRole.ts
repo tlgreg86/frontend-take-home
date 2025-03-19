@@ -1,9 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-interface CreateRoleParams {
-  name: string;
-  description: string;
-}
+import { CreateRoleParams } from './types';
 
 export const useCreateRole = () => {
   const queryClient = useQueryClient();

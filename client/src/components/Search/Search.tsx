@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import AddUserDialog from "../UsersTab/AddUserDialog";
 import AddRoleDialog from '../RolesTab/AddRoleDialog';
 
-interface SearchProps {
+type SearchProps = {
   placeholderText: string;
   onSearchInputChange: (search: string) => void;
   ariaLabel: string;

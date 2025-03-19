@@ -11,10 +11,10 @@ import { useState } from "react";
 import { useCreateUser } from "../../api/users/useCreateUser";
 import { useFetchRoles } from "../../api/roles/useFetchRoles";
 
-interface AddUserDialogProps {
+type AddUserDialogProps = {
   open: boolean;
   onClose: () => void;
-}
+};
 
 const AddUserDialog = ({ open, onClose }: AddUserDialogProps) => {
   const [firstName, setFirstName] = useState("");

@@ -5,7 +5,7 @@ import { useFetchUsers } from "../../api/users/useFetchUsers";
 import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
 
-interface UsersTabProps {
+type UsersTabProps = {
   resetSearchParams?: boolean;
 }
 

@@ -4,11 +4,11 @@ import { useState } from "react";
 import DeleteUserDialog from './DeleteUserDialog';
 import { User } from '../../api/users/types';
 
-type Props = {
+type ActionMenuProps = {
   user: User;
 };
 
-const ActionMenu = ({ user }: Props) => {
+const ActionMenu = ({ user }: ActionMenuProps) => {
   const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
 
   return (

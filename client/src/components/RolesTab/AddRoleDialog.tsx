@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useCreateRole } from "../../api/roles/useCreateRole";
 
-interface AddUserDialogProps {
+type AddUserDialogProps = {
   open: boolean;
   onClose: () => void;
 }

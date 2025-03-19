@@ -11,7 +11,7 @@ import { Role } from "../../api/roles/types";
 import { useEditRole } from "../../api/roles/useEditRole";
 import { useState } from "react";
 
-interface EditRoleDialogProps {
+type EditRoleDialogProps = {
   role: Role;
   open: boolean;
   onClose: () => void;

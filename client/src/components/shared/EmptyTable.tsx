@@ -1,6 +1,6 @@
 import { Table } from "@radix-ui/themes";
 
-interface EmptyTableProps{
+type EmptyTableProps = {
   message: string;
 };
 

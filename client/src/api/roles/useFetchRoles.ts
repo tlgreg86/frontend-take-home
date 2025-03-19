@@ -1,11 +1,7 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { FetchUsersParams } from "../users/types";
 import { buildQueryString } from "../utils";
-import { Role } from './types';
-
-interface FetchRolesResponse {
-  data: Role[];
-}
+import { FetchRolesResponse } from './types';
 
 export const useFetchRoles = (
   searchParams: FetchUsersParams = { page: 1 }

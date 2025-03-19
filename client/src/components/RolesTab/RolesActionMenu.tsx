@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Role } from "../../api/roles/types";
 import EditRoleDialog from "./EditRoleDialog";
 
-interface ActionMenuProps {
+type ActionMenuProps = {
   role: Role;
 };
 
