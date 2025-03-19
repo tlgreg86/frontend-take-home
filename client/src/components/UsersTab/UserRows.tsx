@@ -1,7 +1,7 @@
 import { Avatar, Flex, Table } from "@radix-ui/themes";
 import UserRole from './UserRole';
 import { User } from '../../api/users/types';
-import ActionMenu from './ActionMenu';
+import UsersActionMenu from './UsersActionMenu';
 
 type UserRowsProps = {
   users: User[]
@@ -29,7 +29,7 @@ const UserRows = ({users}: UserRowsProps) => {
       </Table.Cell>
       <Table.Cell>{formatter.format(new Date(user.createdAt))}</Table.Cell>
       <Table.Cell align={"center"}>
-        <ActionMenu user={user} />
+        <UsersActionMenu user={user} />
       </Table.Cell>
     </Table.Row>
   ));

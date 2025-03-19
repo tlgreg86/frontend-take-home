@@ -8,7 +8,7 @@ type ActionMenuProps = {
   user: User;
 };
 
-const ActionMenu = ({ user }: ActionMenuProps) => {
+const UsersActionMenu = ({ user }: ActionMenuProps) => {
   const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
 
   return (
@@ -34,4 +34,4 @@ const ActionMenu = ({ user }: ActionMenuProps) => {
   );
 };
 
-export default ActionMenu;
+export default UsersActionMenu;
