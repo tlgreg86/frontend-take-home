@@ -7,3 +7,14 @@ export type User = {
   roleId: string;
   photo?: string;
 };
+
+export type FetchUsersParams = {
+  search?: string;
+  page: number;
+};
+
+export type CreateUserParams = {
+  firstName: string;
+  lastName: string;
+  roleId: string;
+}

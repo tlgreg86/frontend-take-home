@@ -5,12 +5,17 @@ import { useFetchUsers } from "../../api/users/useFetchUsers";
 import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
 
-interface UsersTabProps {
+type UsersTabProps = {
   resetSearchParams?: boolean;
 }
 
 const UsersTab = ({ resetSearchParams }: UsersTabProps) => {
   const [searchParams, setSearchParams] = useState({ page: 1, search: "" });
+  const [isAddUserDialogOpen, setIsAddUserDialogOpen] = useState(false);
+
+  const handleDialogOpen = () => setIsAddUserDialogOpen(true);
+  const handleDialogClose = () => setIsAddUserDialogOpen(false);
+
   const [debouncedSearchParams, setDebouncedSearchParams] =
     useState(searchParams);
 
@@ -38,8 +43,12 @@ const UsersTab = ({ resetSearchParams }: UsersTabProps) => {
     <Tabs.Content value="users">
       <Search
         onSearchInputChange={onSearchInputChange}
+        buttonText="+ Add user"
         placeholderText="Search by name..."
         ariaLabel="Search users by name"
+        isAddUserDialogOpen={isAddUserDialogOpen}
+        handleDialogClose={handleDialogClose}
+        handleDialogOpen={handleDialogOpen}
       />
       <UsersTable
         hasNext={!!data?.next}

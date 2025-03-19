@@ -1,17 +1,18 @@
-import { Table, Button, Flex } from "@radix-ui/themes";
+import { Table } from "@radix-ui/themes";
 import UserRows from "./UserRows";
 import { User } from "../../api/users/types";
 import TableSkeletonLoader from "../shared/TableSkeletonLoader";
 import EmptyTable from "../shared/EmptyTable";
+import PaginationRow from "../shared/PaginationRow";
 
-interface UsersTableProps {
+type UsersTableProps = {
   users: User[];
   isPending: boolean;
   onPrevious: () => void;
   onNext: () => void;
   hasPrevious: boolean;
   hasNext: boolean;
-}
+};
 
 const UsersTable = ({
   users = [],
@@ -43,32 +44,12 @@ const UsersTable = ({
           <EmptyTable message="No users found" />
         )}
         {hasNextOrPrevious && (
-          <Table.Row>
-            <Table.Cell colSpan={4}>
-              <Flex justify="end" gap="2">
-                <Button
-                  onClick={onPrevious}
-                  disabled={!hasPrevious}
-                  variant="surface"
-                  color="gray"
-                  highContrast
-                  aria-label="Go to previous page"
-                >
-                  Previous
-                </Button>
-                <Button
-                  onClick={onNext}
-                  disabled={!hasNext}
-                  variant="surface"
-                  color="gray"
-                  highContrast
-                  aria-label="Go to next page"
-                >
-                  Next
-                </Button>
-              </Flex>
-            </Table.Cell>
-          </Table.Row>
+          <PaginationRow
+            onPrevious={onPrevious}
+            onNext={onNext}
+            hasPrevious={hasPrevious}
+            hasNext={hasNext}
+          />
         )}
       </Table.Body>
     </Table.Root>

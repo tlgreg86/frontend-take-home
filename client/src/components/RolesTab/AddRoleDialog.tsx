@@ -2,36 +2,30 @@ import {
   Button,
   Flex,
   Text,
-  Strong,
   Dialog,
   TextField,
   Section,
 } from "@radix-ui/themes";
-import { Role } from "../../api/roles/types";
-import { useEditRole } from "../../api/roles/useEditRole";
 import { useState } from "react";
+import { useCreateRole } from "../../api/roles/useCreateRole";
 
-type EditRoleDialogProps = {
-  role: Role;
+type AddUserDialogProps = {
   open: boolean;
   onClose: () => void;
-};
+}
 
-const EditRoleDialog = ({ role, open, onClose }: EditRoleDialogProps) => {
-  const [name, setName] = useState(role.name);
-  const [description, setDescription] = useState(role.description);
+const AddRoleDialog = ({ open, onClose }: AddUserDialogProps) => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
-  const { mutateAsync } = useEditRole();
+  const { mutateAsync } = useCreateRole();
 
   const handleUpdateRole = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       await mutateAsync(
-        {
-          id: role.id,
-          ...{ name, description },
-        },
+        { ...{ name, description } },
         {
           onSuccess: () => {
             onClose();
@@ -39,19 +33,16 @@ const EditRoleDialog = ({ role, open, onClose }: EditRoleDialogProps) => {
         }
       );
     } catch (error) {
-      console.error("Failed to update role:", error);
+      console.error("Failed create role", error);
     }
   };
 
   return (
     <Dialog.Root open={open} onOpenChange={onClose}>
       <Dialog.Content>
-        <Dialog.Title>Edit role</Dialog.Title>
+        <Dialog.Title>Add role</Dialog.Title>
         <Dialog.Description>
-          <Text>
-            You are updating the
-            <Strong> {role.name}</Strong> role.
-          </Text>
+          <Text>Create a new role.</Text>
         </Dialog.Description>
         <Section size={"1"}>
           <form onSubmit={handleUpdateRole}>
@@ -79,12 +70,17 @@ const EditRoleDialog = ({ role, open, onClose }: EditRoleDialogProps) => {
 
             <Flex gap="3" mt="4" justify="end">
               <Dialog.Close>
-                <Button color="gray" variant="surface" highContrast>
+                <Button
+                  onClick={onClose}
+                  color="gray"
+                  variant="surface"
+                  highContrast
+                >
                   Cancel
                 </Button>
               </Dialog.Close>
               <Button type="submit" variant="outline">
-                Update role
+                Create role
               </Button>
             </Flex>
           </form>
@@ -94,4 +90,4 @@ const EditRoleDialog = ({ role, open, onClose }: EditRoleDialogProps) => {
   );
 };
 
-export default EditRoleDialog;
+export default AddRoleDialog;

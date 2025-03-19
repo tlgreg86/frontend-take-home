@@ -1,18 +1,21 @@
 import { Tabs } from "@radix-ui/themes";
 import Search from "../Search/Search";
-import {
-  useEffect,
-  useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
 import RolesTable from "./RolesTable";
 import { useFetchRoles } from "../../api/roles/useFetchRoles";
 
-interface RolesTabProps {
+type RolesTabProps = {
   resetSearchParams?: boolean;
-}
+};
 
 const RolesTab = ({ resetSearchParams }: RolesTabProps) => {
   const [searchParams, setSearchParams] = useState({ page: 1, search: "" });
+  const [isAddRoleDialogOpen, setIsAddRoleDialogOpen] = useState(false);
+
+  const handleDialogOpen = () => setIsAddRoleDialogOpen(true);
+  const handleDialogClose = () => setIsAddRoleDialogOpen(false);
+
   const [debouncedSearchParams, setDebouncedSearchParams] =
     useState(searchParams);
 
@@ -34,16 +37,31 @@ const RolesTab = ({ resetSearchParams }: RolesTabProps) => {
     if (resetSearchParams) {
       setSearchParams({ page: 1, search: "" });
     }
-  }, [resetSearchParams]);    
+  }, [resetSearchParams]);
 
   return (
     <Tabs.Content value="roles">
       <Search
         onSearchInputChange={onSearchInputChange}
+        buttonText="+ Add role"
         placeholderText="Search by role..."
         ariaLabel="Search roles by name"
+        isAddRoleDialogOpen={isAddRoleDialogOpen}
+        handleDialogClose={handleDialogClose}
+        handleDialogOpen={handleDialogOpen}
       />
-      <RolesTable roles={data?.data} isPending={isPending} />
+      <RolesTable
+        hasNext={!!data?.next}
+        hasPrevious={!!data?.prev}
+        onNext={() => {
+          setSearchParams({ ...searchParams, page: searchParams.page + 1 });
+        }}
+        onPrevious={() => {
+          setSearchParams({ ...searchParams, page: searchParams.page - 1 });
+        }}
+        roles={data?.data || []}
+        isPending={isPending}
+      />
     </Tabs.Content>
   );
 };

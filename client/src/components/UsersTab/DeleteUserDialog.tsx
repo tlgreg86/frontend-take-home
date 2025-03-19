@@ -2,13 +2,13 @@ import { Button, AlertDialog, Flex, Text, Strong } from "@radix-ui/themes";
 import { useDeleteUser } from "../../api/users/useDeleteUser";
 import { User } from '../../api/users/types';
 
-type Props = {
+type DeleteUserDialogProps = {
   user: User;
   open: boolean;
   onClose: () => void;
 };
 
-const DeleteUserDialog = ({ user, open, onClose }: Props) => {
+const DeleteUserDialog = ({ user, open, onClose }: DeleteUserDialogProps) => {
   const { mutate } = useDeleteUser(user.id);
 
   const handleDelete = () => {
