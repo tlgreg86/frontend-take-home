@@ -11,10 +11,10 @@ interface UsersTabProps {
 
 const UsersTab = ({ resetSearchParams }: UsersTabProps) => {
   const [searchParams, setSearchParams] = useState({ page: 1, search: "" });
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isAddUserDialogOpen, setIsAddUserDialogOpen] = useState(false);
 
-  const handleDialogOpen = () => setIsDialogOpen(true);
-  const handleDialogClose = () => setIsDialogOpen(false);
+  const handleDialogOpen = () => setIsAddUserDialogOpen(true);
+  const handleDialogClose = () => setIsAddUserDialogOpen(false);
 
   const [debouncedSearchParams, setDebouncedSearchParams] =
     useState(searchParams);
@@ -46,7 +46,7 @@ const UsersTab = ({ resetSearchParams }: UsersTabProps) => {
         buttonText="+ Add user"
         placeholderText="Search by name..."
         ariaLabel="Search users by name"
-        isDialogOpen={isDialogOpen}
+        isAddUserDialogOpen={isAddUserDialogOpen}
         handleDialogClose={handleDialogClose}
         handleDialogOpen={handleDialogOpen}
       />

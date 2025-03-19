@@ -1,13 +1,15 @@
 import { Button, Flex, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import AddUserDialog from "../UsersTab/AddUserDialog";
+import AddRoleDialog from '../RolesTab/AddRoleDialog';
 
 interface SearchProps {
   placeholderText: string;
   onSearchInputChange: (search: string) => void;
   ariaLabel: string;
   buttonText: string;
-  isDialogOpen: boolean;
+  isAddUserDialogOpen?: boolean;
+  isAddRoleDialogOpen?: boolean;
   handleDialogClose: () => void;
   handleDialogOpen: () => void;
 }
@@ -17,7 +19,8 @@ const Search = ({
   placeholderText,
   onSearchInputChange,
   ariaLabel,
-  isDialogOpen,
+  isAddUserDialogOpen = false,
+  isAddRoleDialogOpen = false,
   handleDialogClose,
   handleDialogOpen,
 }: SearchProps) => {
@@ -36,7 +39,8 @@ const Search = ({
         </TextField.Root>
         <Button onClick={handleDialogOpen}>{buttonText}</Button>
       </Flex>
-      <AddUserDialog open={isDialogOpen} onClose={handleDialogClose} />
+      <AddUserDialog open={isAddUserDialogOpen} onClose={handleDialogClose} />
+      <AddRoleDialog open={isAddRoleDialogOpen} onClose={handleDialogClose} />
     </>
   );
 };

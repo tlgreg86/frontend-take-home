@@ -13,6 +13,11 @@ interface RolesTabProps {
 
 const RolesTab = ({ resetSearchParams }: RolesTabProps) => {
   const [searchParams, setSearchParams] = useState({ page: 1, search: "" });
+  const [isAddRoleDialogOpen, setIsAddRoleDialogOpen] = useState(false);
+
+  const handleDialogOpen = () => setIsAddRoleDialogOpen(true);
+  const handleDialogClose = () => setIsAddRoleDialogOpen(false);
+
   const [debouncedSearchParams, setDebouncedSearchParams] =
     useState(searchParams);
 
@@ -43,8 +48,11 @@ const RolesTab = ({ resetSearchParams }: RolesTabProps) => {
         buttonText="+ Add role"
         placeholderText="Search by role..."
         ariaLabel="Search roles by name"
+        isAddRoleDialogOpen={isAddRoleDialogOpen}
+        handleDialogClose={handleDialogClose}
+        handleDialogOpen={handleDialogOpen}
       />
-      <RolesTable roles={data?.data} isPending={isPending} />
+      <RolesTable roles={data?.data || []} isPending={isPending} />
     </Tabs.Content>
   );
 };
