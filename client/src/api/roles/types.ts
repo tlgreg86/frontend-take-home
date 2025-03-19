@@ -19,4 +19,6 @@ export type EditRoleParams = {
 
 export type FetchRolesResponse = {
   data: Role[];
+  next: string | null;
+  prev: string | null;
 }
